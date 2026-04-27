@@ -50,6 +50,7 @@ const userSlice = createSlice({
       state.login_user = initialState;
       localStorage.removeItem("accessToken");
       localStorage.removeItem("cartList");
+      localStorage.removeItem("products");
       toast.info("Kullanıcı çıkışı başarılı.", { position: "bottom-center" });
       return;
     },

@@ -14,7 +14,7 @@ import {
   removeCartList,
   decrementCartList,
 } from "../lib/cartSlice";
-import { useEffect, useState } from "react";
+
 import { Minus, Plus, Trash } from "lucide-react";
 
 const AlkolCardForCart = ({ cart }) => {
@@ -27,20 +27,21 @@ const AlkolCardForCart = ({ cart }) => {
       <Card className="flex h-64 w-fit justify-center p-4 items-center  mx-auto sm:max-w-xl lg:max-w-full  pt-0 dark:bg-gray-800 dark:text-white">
         <div className="flex w-240  justify-evenly items-center p-4">
           <div className=" sm:aspect-w-3 sm:aspect-h-4 lg:aspect-w-3 lg:aspect-h-4 w-fit items-center p-2 my-2 flex">
-            <img
-              alt={adi}
-              loading="lazy"
-              decoding="async"
-              className="object-cover hover:shadow-lg sm:mx-4 lg:mx-6 shadow-gray-800  inset-0 block hover:scale-110 mx-4 transition-all delay-250 duration-200 ease-in-out sm:max-h-40  lg:max-h-50"
-              src={imagesUrl}
-            />
+            <Link key={id} to={`/product-details/${id}`}>
+              <img
+                alt={adi}
+                loading="lazy"
+                decoding="async"
+                className="object-cover hover:shadow-lg sm:mx-4 lg:mx-6 shadow-gray-800  inset-0 block hover:scale-110 mx-4 transition-all delay-250 duration-200 ease-in-out sm:max-h-40  lg:max-h-50"
+                src={imagesUrl}
+              />
+            </Link>
             <CardHeader className=" ">
               <CardTitle className=" dark:text-white text-4xl w-full text-gray-700 font-bold mb-4">
                 {adi}
               </CardTitle>
             </CardHeader>
-          </div>
-
+          </div>{" "}
           <div className=" flex flex-col  items-center justify-center ">
             <div className="flex lg:text-2xl sm:text-sm dark:text-white text-black items-center justify-center p-4 gap-2">
               <CardDescription> Boyutu </CardDescription>

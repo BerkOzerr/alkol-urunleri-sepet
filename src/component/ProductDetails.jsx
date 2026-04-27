@@ -7,7 +7,6 @@ const ProductDetails = () => {
   const { id } = useParams();
   const intId = parseInt(id, 10);
   const { products, isLoading, error } = useSelector((state) => state.product);
-
   return (
     <div>
       <AllHeader />

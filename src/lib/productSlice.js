@@ -35,7 +35,9 @@ const productSlice = createSlice({
       description: "",
       yearDate: "",
     },
-    products: [],
+    products: localStorage.getItem("products")
+      ? JSON.parse(localStorage.getItem("products"))
+      : [],
     productsSearch: [],
     isLoading: true,
     error: null,
@@ -62,9 +64,10 @@ const productSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(getAllProducts.fulfilled, (state, action) => {
-      // console.log(action);
+      console.log(action);
       state.isLoading = false;
       state.products = [...action.payload];
+      localStorage.setItem("products", JSON.stringify(state.products));
     });
     builder.addCase(getAllProducts.rejected, (state, action) => {
       state.isLoading = false;

@@ -46,36 +46,24 @@ export default function RegisterForm() {
         email: "",
         password: "",
       });
+      return;
     }
     if (e.target.name === "submit") {
-      // if (
-      //   userReg.email === "" ||
-      //   userReg.email === null ||
-      //   userReg.password === "" ||
-      //   userReg.password === null ||
-      //   userReg.firstName === "" ||
-      //   userReg.firstName === null ||
-      //   userReg.lastName === null ||
-      //   userReg.lastName === ""
-      // ) {
-      //   // console.log("empty Area");
-      //   setErrorMessage("Empty or type controled.");
-      //   return;
-      // }
+      if (
+        userReg.email === "" ||
+        userReg.email === null ||
+        userReg.password === "" ||
+        userReg.password === null ||
+        userReg.firstName === "" ||
+        userReg.firstName === null ||
+        userReg.lastName === null ||
+        userReg.lastName === ""
+      ) {
+        setErrorMessage("Empty or type controled.");
+        return;
+      }
 
       dispatch(register(userReg));
-
-      // const ex = dispatch(register(userReg));
-      // ex.then((result) => {
-      //   console.log(result);
-      //   if (result.type === "register/rejected") {
-      //     setErrorMessage("Kayit zaten var. Başka Email deneyiniz.");
-      //   }
-      //   if (result.type === "register/fulfilled") {
-      //     setErrorMessage("");
-      //     navigate("/login");
-      //   }
-      // });
     }
     setErrorMessage("");
   };
@@ -132,6 +120,7 @@ export default function RegisterForm() {
                 type="email"
                 placeholder="john@example.com"
                 required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                 onChange={(e) => handleChange(e)}
                 value={userReg.email}
               />
@@ -159,7 +148,7 @@ export default function RegisterForm() {
                 </FieldLabel>
               </Link>
             </Field>
-            <Field orientation="">
+            <Field>
               <Button
                 id="cancel"
                 onClick={(e) => handleSubmit(e)}
@@ -170,11 +159,10 @@ export default function RegisterForm() {
                 Cancel
               </Button>
               <Button
-                id="submit"
+                className="dark:bg-black dark:text-white"
                 onClick={(e) => handleSubmit(e)}
                 type="submit"
                 name="submit"
-                className="dark:bg-black dark:text-white"
                 variant="default"
               >
                 Submit

@@ -41,7 +41,9 @@ function LoginForm() {
     });
   };
   const handleSubmit = (e) => {
+    e.preventDefault();
     // console.log(e.target.name);
+
     if (e.target.name === "submit") {
       if (
         userlogic.email === "" ||
@@ -58,29 +60,10 @@ function LoginForm() {
         email: "",
         password: "",
       });
+      return;
     }
+
     dispatch(login(userlogic));
-
-    // const ex = dispatch(login(userlogic));
-    // ex.then((result) => {
-    //   console.log(result);
-
-    //   if (result.type === "login/fulfilled") {
-    //     if (result.payload.status === 403) {
-    //       setErrorMessage("Lütfen Kaydınızı kontrol ediniz.");
-    //       return;
-    //     }
-    //     if (result.payload.status === 200) {
-    //       setErrorMessage("");
-    //       navigate("/");
-    //       return;
-    //     }
-    //   }
-    //   if (result.type === "login/rejected") {
-    //     setErrorMessage("Lütfen Kaydınızı kontrol ediniz.");
-    //     return;
-    //   }
-    // });
   };
 
   return (
@@ -112,6 +95,7 @@ function LoginForm() {
                 placeholder="john@example.com"
                 name="email"
                 required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                 value={userlogic.email}
               />
             </Field>
@@ -135,7 +119,7 @@ function LoginForm() {
                 Register
               </Link>
             </Field>
-            <Field orientation="">
+            <Field>
               <Button
                 id="cancel"
                 onClick={(e) => handleSubmit(e)}

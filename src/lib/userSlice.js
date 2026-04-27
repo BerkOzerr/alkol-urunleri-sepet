@@ -1,15 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { Login, Register } from "./services";
 import { client } from "./axiosClient";
 import { toast } from "react-toastify";
-import { act } from "react";
-import { getTotal } from "./cartSlice";
 
 export const login = createAsyncThunk("login", async (user) => {
   try {
-    console.log(user);
-    // const response = await client.post("/login", user);
-    // return response;
+    //console.log(user);
+    const response = await client.post("/login", user);
+    return response;
   } catch (error) {
     return error;
   }
@@ -18,25 +15,13 @@ export const login = createAsyncThunk("login", async (user) => {
 export const register = createAsyncThunk("register", async (user) => {
   try {
     console.log(user);
-    //const response = client.post("/register", user);
-    //console.log(response);
-    // return response;
+    const response = client.post("/register", user);
+    // console.log(response);
+    return response;
   } catch (error) {
     //console.error("Error", error);
     return error;
   }
-
-  // console.log(user);
-  // const response = await Register(user);
-
-  // if (response.status === 200) {
-  //   //console.log(response.status);
-  //   if (response.data.status === 400) {
-  //     // console.log(response.data.status);
-  //     return response.data;
-  //   }
-  // }
-  // return response.data;
 });
 
 const initialState = {

@@ -94,6 +94,7 @@ const AllHeader = () => {
             onChange={(e) => handleChanges(e)}
             placeholder="Search"
             type="text"
+            pattern="[a-z]+"
             className="placeholer:text-white text-start dark:placeholder:text-white  text-white hover:border-amber-400"
           />
           <Search className="cursor-pointer absolute top-1 right-1 transition-all delay-200 duration-100 hover:animate-ping" />

@@ -54,6 +54,7 @@ function LoginForm() {
         setErrorMessage("E-mail password not null.");
         return;
       }
+      dispatch(login(userlogic));
     }
     if (e.target.name === "cancel") {
       setUserLogic({
@@ -62,8 +63,7 @@ function LoginForm() {
       });
       return;
     }
-
-    dispatch(login(userlogic));
+    setErrorMessage("");
   };
 
   return (
